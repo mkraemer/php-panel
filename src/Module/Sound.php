@@ -1,9 +1,9 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 /**
- * BAR\Module\Sound
+ * Panel\Module\Sound
  */
 class Sound implements PeriodiclyUpdatedModuleInterface
 {

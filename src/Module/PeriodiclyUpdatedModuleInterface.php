@@ -1,9 +1,9 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 /**
- * BAR\Module\PeriodiclyUpdatedModuleInterface
+ * Panel\Module\PeriodiclyUpdatedModuleInterface
  */
 interface PeriodiclyUpdatedModuleInterface
 {

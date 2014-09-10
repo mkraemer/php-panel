@@ -1,13 +1,13 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 use Evenement\EventEmitterTrait;
 use React\EventLoop\LoopInterface;
 use React\Stream\Stream;
 
 /**
- * BAR\Module\BSPWM
+ * Panel\Module\BSPWM
  */
 class BSPWM implements EventedModuleInterface
 {
@@ -15,7 +15,7 @@ class BSPWM implements EventedModuleInterface
 
     public function getKey()
     {
-        return 'bspwm';    
+        return 'bspwm';
     }
 
     public function __construct(LoopInterface $loop)
@@ -23,10 +23,10 @@ class BSPWM implements EventedModuleInterface
         $bspcProcess = proc_open(
             'bspc control --subscribe',
             [['pipe', 'r'], ['pipe', 'w']],
-            $lala
+            $pipes
         );
 
-        $bspcStdout = new Stream($lala[1], $loop);
+        $bspcStdout = new Stream($pipes[1], $loop);
 
         $bspcStdout->on('data', [$this, 'onUpdate']);
     }
@@ -34,7 +34,7 @@ class BSPWM implements EventedModuleInterface
     public function onUpdate($data)
     {
         // WMeDP1:oTERMINALS:fCOMMUNICATION:OWORK:fWORK:fOTHER:Ltiled
-        
+
         $parts = explode(':', $data);
 
         $monitor = array_shift($parts);

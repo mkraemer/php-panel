@@ -1,13 +1,13 @@
 <?php
 
-namespace BAR\Twig;
+namespace Panel\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
 use Twig_SimpleFilter;
 
 /**
- * BAR\Twig\BarTwigExtension
+ * Panel\Twig\BarTwigExtension
  */
 class BarTwigExtension extends Twig_Extension
 {

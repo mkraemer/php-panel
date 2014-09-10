@@ -1,9 +1,9 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 /**
- * BAR\Module\Memory
+ * Panel\Module\Memory
  */
 class Memory implements PeriodiclyUpdatedModuleInterface
 {

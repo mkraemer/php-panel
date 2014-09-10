@@ -1,12 +1,12 @@
 <?php
 
-namespace BAR;
+namespace Panel;
 
 use Evenement\EventEmitterTrait;
 use Twig_Environment;
 
 /**
- * BAR\Renderer
+ * Panel\Renderer
  */
 class Renderer
 {

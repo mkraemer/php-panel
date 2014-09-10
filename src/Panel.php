@@ -1,15 +1,15 @@
 <?php
 
-namespace BAR;
+namespace Panel;
 
 use Exception;
 use React\Stream\Stream;
 use React\EventLoop\LoopInterface;
-use BAR\Module\PeriodiclyUpdatedModuleInterface;
-use BAR\Module\EventedModuleInterface;
+use Panel\Module\PeriodiclyUpdatedModuleInterface;
+use Panel\Module\EventedModuleInterface;
 
 /**
- * BAR\Panel
+ * Panel\Panel
  */
 class Panel
 {

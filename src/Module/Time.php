@@ -1,9 +1,9 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 /**
- * BAR\Module\Time
+ * Panel\Module\Time
  */
 class Time implements PeriodiclyUpdatedModuleInterface
 {

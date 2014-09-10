@@ -1,9 +1,9 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 /**
- * BAR\Module\EventedModuleInterface
+ * Panel\Module\EventedModuleInterface
  */
 interface EventedModuleInterface
 {

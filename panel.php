@@ -13,18 +13,18 @@ $barProcess = proc_open(
 $barStdin = new React\Stream\Stream($pipes[0], $loop);
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/templates'));
-$twig->addExtension(new BAR\Twig\BarTwigExtension());
+$twig->addExtension(new Panel\Twig\BarTwigExtension());
 
 $template = $twig->loadTemplate('bar.twig');
 
-$renderer = new BAR\Renderer($template);
+$renderer = new Panel\Renderer($template);
 
-$panel = new BAR\Panel($loop, $renderer, $barStdin);
-$panel->add(new BAR\Module\Time());
-$panel->add(new BAR\Module\Battery());
-$panel->add(new BAR\Module\Memory());
-$panel->add(new BAR\Module\Sound());
-$panel->add(new BAR\Module\BSPWM($loop));
+$panel = new Panel\Panel($loop, $renderer, $barStdin);
+$panel->add(new Panel\Module\Time());
+$panel->add(new Panel\Module\Battery());
+$panel->add(new Panel\Module\Memory());
+$panel->add(new Panel\Module\Sound());
+$panel->add(new Panel\Module\BSPWM($loop));
 
 $loop->run();
 

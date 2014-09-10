@@ -1,9 +1,9 @@
 <?php
 
-namespace BAR\Module;
+namespace Panel\Module;
 
 /**
- * BAR\Module\Battery
+ * Panel\Module\Battery
  */
 class Battery implements PeriodiclyUpdatedModuleInterface
 {
