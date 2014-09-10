@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-4": {"BAR\\": "src/"}
+    },
+    "require": {
+        "react/react": "0.4.*",
+        "evenement/evenement": "2.0.*",
+        "twig/twig": "1.*"
+    }
+}

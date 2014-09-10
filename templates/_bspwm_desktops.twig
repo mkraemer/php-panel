@@ -1,0 +1,1 @@
+{%spaceless%}{% for desktop in bspwm.desktops%}{{desktop.name|style(desktop.focused ? 'underlined')|color_fg(desktop.occupied ? '#FFFFFFFF':'#FF888888')}}{%if not loop.last%} {%endif%}{%endfor%}{%endspaceless%}
