@@ -1,6 +1,6 @@
 {
     "autoload": {
-        "psr-4": {"BAR\\": "src/"}
+        "psr-4": {"Panel\\": "src/"}
     },
     "require": {
         "react/react": "0.4.*",
