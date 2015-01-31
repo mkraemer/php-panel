@@ -9,7 +9,7 @@ class Time implements PeriodiclyUpdatedModuleInterface
 {
     public function getKey()
     {
-        return 'time';    
+        return 'time';
     }
 
     public function getInterval()

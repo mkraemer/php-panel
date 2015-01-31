@@ -13,7 +13,7 @@ class BarTwigExtension extends Twig_Extension
 {
     public function getName()
     {
-        return 'bar';    
+        return 'bar';
     }
 
     public function getFunctions()
@@ -48,6 +48,6 @@ class BarTwigExtension extends Twig_Extension
             new Twig_SimpleFilter('color_fg', function ($content, $color) {
                 return sprintf('%%{F%s}%s%%{F-}', $color, $content);
             }),
-        ];    
+        ];
     }
 }

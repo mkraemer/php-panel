@@ -9,7 +9,7 @@ class Memory implements PeriodiclyUpdatedModuleInterface
 {
     public function getKey()
     {
-        return 'memory';    
+        return 'memory';
     }
 
     public function getInterval()

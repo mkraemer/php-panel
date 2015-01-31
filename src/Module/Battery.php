@@ -9,7 +9,7 @@ class Battery implements PeriodiclyUpdatedModuleInterface
 {
     public function getKey()
     {
-        return 'battery';    
+        return 'battery';
     }
 
     public function getInterval()

@@ -9,7 +9,7 @@ class Sound implements PeriodiclyUpdatedModuleInterface
 {
     public function getKey()
     {
-        return 'sound';    
+        return 'sound';
     }
 
     public function getInterval()
