@@ -34,8 +34,17 @@ class BSPWM implements EventedModuleInterface
     public function onUpdate($data)
     {
         // WMeDP1:oTERMINALS:fCOMMUNICATION:OWORK:fWORK:fOTHER:Ltiled
+        // WmeDP1:OTERMINALS:fCOMMUNICATION:fWORK:fWORK:fOTHER:LT:MHDMI1:OTERMINALS:fCOMMUNICATION:fWORK:fWORK:fOTHER:LT
 
-        $parts = explode(':', $data);
+        /*
+         * when receiving multiple updates at the same time,
+         * just process the last one:
+         */
+        $statusStrings = explode(PHP_EOL, $data);
+        array_pop($statusStrings); // remove ending linebreak
+        $statusString = array_pop($statusStrings);
+
+        $parts = explode(':', $statusString);
 
         $monitor = array_shift($parts);
         $layout = array_pop($parts);
