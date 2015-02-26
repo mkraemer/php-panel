@@ -43,7 +43,7 @@ class Panel
         } elseif ($module instanceof EventedModuleInterface) {
             $module->on('update', function ($data) use ($module) {
                 $this->renderer->__invoke($module->getKey(), $data);
-            }); 
+            });
         } else {
             throw new Exception('Unknown module type');
         }
