@@ -22,7 +22,6 @@ $renderer = new Panel\Renderer($template);
 $panel = new Panel\Panel($loop, $renderer, $barStdin);
 $panel->add(new Panel\Module\Time());
 $panel->add(new Panel\Module\Battery());
-$panel->add(new Panel\Module\Memory());
 $panel->add(new Panel\Module\Sound($loop));
 $panel->add(new Panel\Module\BSPWM($loop));
 
