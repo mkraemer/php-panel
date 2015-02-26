@@ -2,31 +2,54 @@
 
 namespace Panel\Module;
 
+use Evenement\EventEmitterTrait;
+use React\EventLoop\LoopInterface;
+use React\Stream\Stream;
+
 /**
  * Panel\Module\Sound
  */
-class Sound implements PeriodiclyUpdatedModuleInterface
+class Sound implements EventedModuleInterface
 {
+    use EventEmitterTrait;
+
     public function getKey()
     {
         return 'sound';
     }
 
-    public function getInterval()
+    public function __construct(LoopInterface $loop)
     {
-        return 1;
+        $bspcProcess = proc_open(
+            'pactl subscribe',
+            [['pipe', 'r'], ['pipe', 'w']],
+            $pipes
+        );
+
+        $bspcStdout = new Stream($pipes[1], $loop);
+
+        $bspcStdout->on('data', [$this, 'onUpdate']);
+
+        $loop->addTimer(0, function () {$this->queryData();});
     }
 
-    public function __invoke()
+    public function onUpdate($data)
     {
-        $sinks = shell_exec('pacmd list-sinks');
+        if (strpos($data, 'Event \'change\' on sink') !== false) {
+            $this->queryData();
+        }
+    }
 
-        preg_match('/index:\s1.+^\s+muted:\s(?P<muted>\w+)$/ms', $sinks, $matches);
-        $muted = $matches['muted'] == 'yes';
+    private function queryData()
+    {
+            $sinks = shell_exec('pacmd list-sinks');
 
-        preg_match('/index:\s1.+^\s+volume:\s\w+-\w+:\s*\d+\s*\/\s*(?P<volume>\d+)/ms', $sinks, $matches);
-        $volume = $matches['volume'];
+            preg_match('/index:\s1.+^\s+muted:\s(?P<muted>\w+)$/ms', $sinks, $matches);
+            $muted = $matches['muted'] == 'yes';
 
-        return ['isMuted' => $muted, 'volume' => $volume];
+            preg_match('/index:\s1.+^\s+volume:\s\w+-\w+:\s*\d+\s*\/\s*(?P<volume>\d+)/ms', $sinks, $matches);
+            $volume = $matches['volume'];
+
+            $this->emit('update', [['isMuted' => $muted, 'volume' => $volume]]);
     }
 }
