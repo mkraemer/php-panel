@@ -23,8 +23,12 @@ class Panel
 
         $this->renderer = $renderer;
 
-        $renderer->on('update', function ($string) use ($barStdin) {
-            $barStdin->write($string . PHP_EOL);
+        $lastUpdated = '';
+        $renderer->on('update', function ($string) use ($barStdin, &$lastOutput) {
+            if ($lastOutput != $string) {
+                $lastOutput = $string;
+                $barStdin->write($string . PHP_EOL);
+            }
         });
     }
 
