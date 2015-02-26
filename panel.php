@@ -5,7 +5,7 @@ include __DIR__.'/vendor/autoload.php';
 $loop = React\EventLoop\Factory::create();
 
 $barProcess = proc_open(
-    'bar-aint-recursive -g x12 -B "#88000000" -F "#FFFFFFFF" -f "-*-fixed-*-*-*-*-9-*-*-*-*-*-*-*,-*-stlarch-*-*-*-*-10-*-*-*-*-*-*-*"',
+    'bar-aint-recursive -g x12 -B "#88000000" -F "#FFFFFFFF" -f "-*-fixed-*-*-*-*-9-*-*-*-*-*-*-*"',
     [['pipe', 'r'], ['pipe', 'w']],
     $pipes
 );
