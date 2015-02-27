@@ -42,14 +42,14 @@ class Sound implements EventedModuleInterface
 
     private function queryData()
     {
-            $sinks = shell_exec('pacmd list-sinks');
+        $sinks = shell_exec('pacmd list-sinks');
 
-            preg_match('/index:\s1.+^\s+muted:\s(?P<muted>\w+)$/ms', $sinks, $matches);
-            $muted = $matches['muted'] == 'yes';
+        preg_match('/index:\s1.+^\s+muted:\s(?P<muted>\w+)$/ms', $sinks, $matches);
+        $muted = $matches['muted'] == 'yes';
 
-            preg_match('/index:\s1.+^\s+volume:\s\w+-\w+:\s*\d+\s*\/\s*(?P<volume>\d+)/ms', $sinks, $matches);
-            $volume = $matches['volume'];
+        preg_match('/index:\s1.+^\s+volume:\s\w+-\w+:\s*\d+\s*\/\s*(?P<volume>\d+)/ms', $sinks, $matches);
+        $volume = $matches['volume'];
 
-            $this->emit('update', [['isMuted' => $muted, 'volume' => $volume]]);
+        $this->emit('update', [['isMuted' => $muted, 'volume' => $volume]]);
     }
 }
