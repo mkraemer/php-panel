@@ -5,7 +5,7 @@ include __DIR__.'/vendor/autoload.php';
 $loop = React\EventLoop\Factory::create();
 
 $barProcess = proc_open(
-    'bar-aint-recursive -g x12 -B "#88000000" -F "#FFFFFFFF" -f "-*-fixed-*-*-*-*-9-*-*-*-*-*-*-*"',
+    'bar-aint-recursive -g x12 -B "#88000000" -F "#FFFFFFFF" -f "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"',
     [['pipe', 'r'], ['pipe', 'w']],
     $pipes
 );
@@ -22,6 +22,7 @@ $renderer = new Panel\Renderer($template);
 $panel = new Panel\Panel($loop, $renderer, $barStdin);
 $panel->add(new Panel\Module\Time());
 $panel->add(new Panel\Module\Battery());
+$panel->add(new Panel\Module\Wifi());
 $panel->add(new Panel\Module\Sound($loop));
 $panel->add(new Panel\Module\BSPWM($loop));
 
