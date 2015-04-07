@@ -14,7 +14,7 @@ class Time implements PeriodiclyUpdatedModuleInterface
 
     public function getInterval()
     {
-        return 10;
+        return 60;
     }
 
     public function __invoke()
