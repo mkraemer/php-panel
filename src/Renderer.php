@@ -27,6 +27,8 @@ class Renderer
 
         $output = $this->template->render($this->data);
 
+        $output = str_replace(array("\r", "\n"), "", $output);
+
         $this->emit('update', [$output]);
     }
 }
