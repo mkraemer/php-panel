@@ -29,19 +29,6 @@ class BarTwigExtension extends Twig_Extension
 
             new Twig_SimpleFunction('unicode', function ($code) {
                 return json_decode('"\u' . $code . '"');
-            }),
-
-            new Twig_SimpleFunction('powerline_desktops', function ($desktops) {
-                $nextFocused = false;
-                $elements = [];
-
-                foreach (array_reverse($desktops, true) as $desktop) {
-                    $desktop['next_focused'] = $nextFocused;
-                    $elements[] = $desktop;
-                    $nextFocused = $desktop['focused'];
-                }
-
-                return array_reverse($elements);
             })
         ];
     }

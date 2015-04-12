@@ -14,3 +14,9 @@
 {{ color_bg(background_right) }}
  
 {% endmacro %}
+
+{% macro render_segments(elements) %}
+{% for element in elements %}
+{{element.content|color_bg(element.bg_color)|color_fg(element.fg_color)}}
+{% endfor %}
+{% endmacro %}

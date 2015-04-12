@@ -1,10 +1,9 @@
 {% import 'powerline.twig' as pwl %}
 
 {% set background = '#FF20201d' %}
-{% set inactive = '#FF292824' %}
-{% set active = '#FFb854d4' %}
-{% set desktops = powerline_desktops(bspwm.desktops)%}
+{% set unoccupied = '#FF20201d' %}
+{% set occupied = '#FF6e6b5e' %}
+{% set active = '#FF60ac39' %}
+{% set desktops = convert_desktops(bspwm.desktops, active, occupied, unoccupied, '#FFFFFFFF')%}
 
-{% for desktop in desktops%}
-{{pwl.new_segment_ltr(desktop.focused ? active : inactive, desktop.next_focused ? active : (loop.last ? background : inactive), desktop.name)}}
-{%endfor%}
+{{pwl.render_segments(inject_splitters(desktops, background, '#FFFFFFFF'))}}
