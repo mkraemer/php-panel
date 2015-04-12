@@ -1,0 +1,10 @@
+{% import 'powerline.twig' as pwl %}
+
+{% set background = '#FF20201d' %}
+{% set inactive = '#FF292824' %}
+{% set active = '#FFb854d4' %}
+{% set desktops = powerline_desktops(bspwm.desktops)%}
+
+{% for desktop in desktops%}
+{{pwl.new_segment_ltr(desktop.focused ? active : inactive, desktop.next_focused ? active : (loop.last ? background : inactive), desktop.name)}}
+{%endfor%}

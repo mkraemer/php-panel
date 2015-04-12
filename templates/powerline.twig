@@ -1,0 +1,16 @@
+{% macro new_segment_rtl(background, background_left, content) %}
+{{ color_bg(background_left) }}
+{{ ''|color_fg(background)}}
+{{ color_bg(background) }}
+ 
+{{ content}}
+{% endmacro %}
+
+{% macro new_segment_ltr(background, background_right, content) %}
+{{ color_bg(background) }}
+{{ content}}
+ 
+{{ ''|color_bg(background_right)|color_fg(background)}}
+{{ color_bg(background_right) }}
+ 
+{% endmacro %}
