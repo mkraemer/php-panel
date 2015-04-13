@@ -55,6 +55,7 @@ class PowerlineExtension extends Twig_Extension
         if (empty($desktops)) {
             return [];
         }
+
         foreach ($desktops as &$desktop) {
             $desktop['fg_color'] = $foregroundColor;
             $desktop['content'] = $desktop['name'];
