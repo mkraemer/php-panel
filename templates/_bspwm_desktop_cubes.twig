@@ -4,6 +4,7 @@
 {% set unoccupied = '#FF20201d' %}
 {% set occupied = '#FF6e6b5e' %}
 {% set active = '#FF60ac39' %}
-{% set desktops = convert_desktops(bspwm.desktops, active, occupied, unoccupied, '#FFFFFFFF')%}
+{% set foreground = '#FFfefbec' %}
+{% set desktops = convert_desktops(bspwm.desktops, active, occupied, unoccupied, foreground)%}
 
-{{pwl.render_segments(inject_splitters(desktops, background, '#FFFFFFFF'))}}
+{{pwl.render_segments(inject_splitters_gravity_left(desktops, background, foreground))}}

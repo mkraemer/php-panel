@@ -2,11 +2,15 @@
 
 {% set background = '#FF20201d' %}
 {% set green = '#FF60ac39' %}
+{% set red = '#FFd73737' %}
 {% set foreground = '#FFfefbec' %}
 
-{{pwl.new_segment_rtl(green, background, battery|number_format)}}
-  {{ wifi.essid }}
-  {{ sound.volume }}
-  {{ time }}
- 
+{% set segments = [
+    {'content': battery|number_format, 'fg_color': foreground, 'bg_color': green},
+    {'content': wifi.essid, 'fg_color': foreground, 'bg_color': green},
+    {'content': sound.volume, 'fg_color': foreground, 'bg_color': sound.isMuted ? red : green},
+    {'content': time, 'fg_color': foreground, 'bg_color': '#FFb854d4'}
+] %}
+
+{{ pwl.render_segments(inject_splitters_gravity_right(segments, background, foreground))}}
 {{color_bg(background)}}
