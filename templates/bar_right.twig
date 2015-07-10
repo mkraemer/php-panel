@@ -1,16 +1,11 @@
 {% import 'powerline.twig' as pwl %}
 
-{% set background = '#FF20201d' %}
-{% set green = '#FF60ac39' %}
-{% set red = '#FFd73737' %}
-{% set foreground = '#FFfefbec' %}
-
 {% set segments = [
-    {'content': battery|number_format, 'fg_color': foreground, 'bg_color': green},
-    {'content': wifi.essid, 'fg_color': foreground, 'bg_color': green},
-    {'content': sound.volume, 'fg_color': foreground, 'bg_color': sound.isMuted ? red : green},
-    {'content': time, 'fg_color': foreground, 'bg_color': '#FFb854d4'}
+    {'content': battery|number_format, 'fg_color': color15, 'bg_color': color2},
+    {'content': wifi.essid ~ ' (' ~ wifi.bitrate ~ ')', 'fg_color': color15, 'bg_color': color2},
+    {'content': sound.volume, 'fg_color': color15, 'bg_color': sound.isMuted ? color1 : color2},
+    {'content': time, 'fg_color': color15, 'bg_color': color5}
 ] %}
 
-{{ pwl.render_segments(inject_splitters_gravity_right(segments, background, foreground))}}
-{{color_bg(background)}}
+{{ pwl.render_segments(inject_splitters_gravity_right(segments, color0, color15))}}
+{{color_bg(color0)}}

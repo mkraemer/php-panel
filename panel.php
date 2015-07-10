@@ -5,7 +5,7 @@ include __DIR__.'/vendor/autoload.php';
 $loop = React\EventLoop\Factory::create();
 
 $barProcess = proc_open(
-    'bar-aint-recursive -g x12 -B "#88000000" -F "#FFFFFFFF" -f "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"',
+    'lemonbar -g x12 -B "#FF20201d" -F "#FFFFFFFF" -f "-*-terminus-*-*-*-*-*-*-*-*-*-*-iso10646-1"',
     [['pipe', 'r'], ['pipe', 'w']],
     $pipes
 );
@@ -14,6 +14,8 @@ $barStdin = new React\Stream\Stream($pipes[0], $loop);
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/templates'));
 $twig->addExtension(new Panel\Twig\BarTwigExtension());
+$twig->addExtension(new Panel\Twig\PowerlineExtension());
+$twig->addExtension(new Panel\Twig\ColorschemeExtension());
 
 $template = $twig->loadTemplate('bar.twig');
 

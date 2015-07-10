@@ -1,10 +1,5 @@
 {% import 'powerline.twig' as pwl %}
 
-{% set background = '#FF20201d' %}
-{% set unoccupied = '#FF20201d' %}
-{% set occupied = '#FF6e6b5e' %}
-{% set active = '#FF60ac39' %}
-{% set foreground = '#FFfefbec' %}
-{% set desktops = convert_desktops(bspwm.desktops, active, occupied, unoccupied, foreground)%}
+{% set desktops = convert_desktops(bspwm.desktops, color2, color19, color0, color15)%}
 
-{{pwl.render_segments(inject_splitters_gravity_left(desktops, background, foreground))}}
+{{pwl.render_segments(inject_splitters_gravity_left(desktops, color0, color15))}}

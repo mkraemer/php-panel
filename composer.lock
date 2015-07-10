@@ -485,16 +485,16 @@
         },
         {
             "name": "react/socket-client",
-            "version": "v0.4.2",
+            "version": "v0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "5b4ccbb9071f81280f20971cccd2abe980d027ca"
+                "reference": "1375dac21b1881cba31c2b38f412dc039566673f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/5b4ccbb9071f81280f20971cccd2abe980d027ca",
-                "reference": "5b4ccbb9071f81280f20971cccd2abe980d027ca",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/1375dac21b1881cba31c2b38f412dc039566673f",
+                "reference": "1375dac21b1881cba31c2b38f412dc039566673f",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +523,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2014-10-16 22:23:10"
+            "time": "2015-03-20 15:24:06"
         },
         {
             "name": "react/stream",

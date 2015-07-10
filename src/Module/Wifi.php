@@ -24,6 +24,9 @@ class Wifi implements PeriodiclyUpdatedModuleInterface
         preg_match('/SSID:\s(?P<SSID>\w+)$/ms', $data, $matches);
         $essid = $matches['SSID'];
 
-        return ['essid' => $essid];
+        preg_match('/tx bitrate:\s(?P<bitrate>.*)$/ms', $data, $matches);
+        $bitrate = $matches['bitrate'];
+
+        return ['essid' => $essid, 'bitrate' => $bitrate];
     }
 }

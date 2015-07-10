@@ -13,6 +13,7 @@ use Panel\Module\EventedModuleInterface;
  */
 class Panel
 {
+    /** @var $loop React\EventLoop\LoopInterface */
     protected $loop;
 
     protected $renderer;
