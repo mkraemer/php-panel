@@ -35,6 +35,9 @@ class Memory implements PeriodiclyUpdatedModuleInterface
 
         $percentage = (1 - ($available / $total)) * 100;
 
-        return $percentage;
+        return [
+            'percentage' => $percentage,
+            'available' => $available * 1024
+        ];
     }
 }

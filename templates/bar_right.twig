@@ -1,11 +1,13 @@
-{% import 'powerline.twig' as pwl %}
-
-{% set segments = [
-    {'content': battery|number_format, 'fg_color': fontColor, 'bg_color': batteryColor},
-    {'content': wifi.essid, 'fg_color': fontColor, 'bg_color': wifiColor},
-    {'content': sound.volume, 'fg_color': fontColor, 'bg_color': sound.isMuted ? soundMutedColor : soundUnmutedColor},
-    {'content': time, 'fg_color': fontColor, 'bg_color': timeColor}
-] %}
-
-{{ pwl.render_segments(inject_splitters_gravity_right(segments, backgroundColor, splitterColor))}}
-{{color_bg(backgroundColor)}}
+{% import 'macros.twig' as m %}
+{{m.element('', (memory['available'] ?: 0)|binarySuffix, focusedDesktopColor)}}
+  
+{{m.element('', (filesystem ?: 0)|binarySuffix, occupiedDesktopColor)}}
+  
+{{m.element('', wifi.essid, wifiColor)}}
+  
+{{m.element( sound.isMuted ? '' : '', sound.volume~'%', soundUnmutedColor)}}
+  
+{{m.element('', battery|number_format~'%', soundMutedColor )}}
+  
+{{m.element('', time, timeColor)}}
+ 
