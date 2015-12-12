@@ -5,6 +5,7 @@ include __DIR__.'/vendor/autoload.php';
 $loop = React\EventLoop\Factory::create();
 
 $barProcess = proc_open(
+    //'lemonbar -g x12 -B "#FF20201d" -F "#FFFFFFFF" -f "Fantasque Sans Mono:pixelsize=14"',
     'lemonbar -g x12 -B "#FF20201d" -F "#FFFFFFFF" -f "-*-terminus-*-*-*-*-*-*-*-*-*-*-iso10646-1"',
     [['pipe', 'r'], ['pipe', 'w']],
     $pipes
@@ -15,7 +16,13 @@ $barStdin = new React\Stream\Stream($pipes[0], $loop);
 $twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/templates'));
 $twig->addExtension(new Panel\Twig\BarTwigExtension());
 $twig->addExtension(new Panel\Twig\PowerlineExtension());
-$twig->addExtension(new Panel\Twig\ColorschemeExtension());
+
+array_shift($argv);
+$colors = $argv;
+if (count($colors) != 11) {
+    throw new \InvalidArgumentException('Invalid amount of color arguments');
+}
+$twig->addExtension(new Panel\Twig\ColorschemeExtension(...$colors));
 
 $template = $twig->loadTemplate('bar.twig');
 

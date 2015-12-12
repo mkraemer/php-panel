@@ -1,5 +1,5 @@
 {% import 'powerline.twig' as pwl %}
 
-{% set desktops = convert_desktops(bspwm.desktops, color2, color19, color0, color15)%}
+{% set desktops = convert_desktops(bspwm.desktops, focusedDesktopColor, occupiedDesktopColor, unoccupiedDesktopColor, fontColor)%}
 
-{{pwl.render_segments(inject_splitters_gravity_left(desktops, color0, color15))}}
+{{pwl.render_segments(inject_splitters_gravity_left(desktops, backgroundColor, splitterColor))}}
