@@ -1,1 +1,18 @@
-{%include '_bspwm_desktop_new.twig' %}
+{%spaceless%}
+{% for desktop in bspwm.desktops%}
+{% if desktop.urgent %}
+{% set desktop_bg = urgentColor %}
+{% set desktop_fg = backgroundColor %}
+{% elseif desktop.focused %}
+{% set desktop_bg = foregroundColor %}
+{% set desktop_fg = backgroundColor %}
+{% elseif desktop.occupied %}
+{% set desktop_bg = backgroundColor %}
+{% set desktop_fg = foregroundColor %}
+{% else %}
+{% set desktop_bg = backgroundColor %}
+{% set desktop_fg = unoccupiedColor %}
+{% endif %}
+{{ (' ' ~ (desktop.name) ~ ' ')|color_bg(desktop_bg)|color_fg(desktop_fg) }}
+{%endfor%}
+{%endspaceless%}

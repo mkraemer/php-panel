@@ -1,13 +1,15 @@
 {% import 'macros.twig' as m %}
-{{m.element('', (memory['available'] ?: 0)|binarySuffix, focusedDesktopColor)}}
+{{m.element('', sysload.current)}} {{sparkline(sysload.history)}}
   
-{{m.element('', (filesystem ?: 0)|binarySuffix, occupiedDesktopColor)}}
+{{m.element('', (memory['available'] ?: 0)|binarySuffix)}}
   
-{{m.element('', wifi.essid, wifiColor)}}
+{{m.element('', (filesystem ?: 0)|binarySuffix)}}
   
-{{m.element( sound.isMuted ? '' : '', sound.volume~'%', soundUnmutedColor)}}
+{{m.element('', wifi.essid)}}
   
-{{m.element('', battery|number_format~'%', soundMutedColor )}}
+{{m.element( sound.isMuted ? '' : '', sound.volume~'%')}}
   
-{{m.element('', time, timeColor)}}
+{{m.element('', battery|number_format~'%')}}
+  
+{{m.element('', time)}}
  

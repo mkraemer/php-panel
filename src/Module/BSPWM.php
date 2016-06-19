@@ -21,7 +21,7 @@ class BSPWM implements EventedModuleInterface
     public function __construct(LoopInterface $loop)
     {
         $bspcProcess = proc_open(
-            'bspc control --subscribe',
+            'bspc subscribe report',
             [['pipe', 'r'], ['pipe', 'w']],
             $pipes
         );
@@ -35,6 +35,7 @@ class BSPWM implements EventedModuleInterface
     {
         // WMeDP1:oTERMINALS:fCOMMUNICATION:OWORK:fWORK:fOTHER:Ltiled
         // WmeDP1:OTERMINALS:fCOMMUNICATION:fWORK:fWORK:fOTHER:LT:MHDMI1:OTERMINALS:fCOMMUNICATION:fWORK:fWORK:fOTHER:LT
+        // WmeDP1    FEXT    LT    MDP1    oWEB    OCOM    oSYS    oDEV    fDEV    fSQL    LT    TF    GS
 
         /*
          * when receiving multiple updates at the same time,
@@ -53,21 +54,27 @@ class BSPWM implements EventedModuleInterface
         foreach ($parts as $desktop) {
             switch ($desktop[0]) {
                 case 'O':
+                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => true, 'focused' => true, 'urgent' => false];
+                    break;
+
                 case 'U':
-                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => true, 'focused' => true];
+                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => true, 'focused' => true, 'urgent' => true];
                     break;
 
                 case 'F':
-                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => false, 'focused' => true];
+                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => false, 'focused' => true, 'urtent' => false];
+                    break;
+
+                case 'u':
+                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => true, 'focused' => false, 'urgent' => true];
                     break;
 
                 case 'o':
-                case 'u':
-                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => true, 'focused' => false];
+                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => true, 'focused' => false, 'urgent' => false];
                     break;
 
                 case 'f':
-                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => false, 'focused' => false];
+                    $desktops[] = ['name' => substr($desktop, 1), 'occupied' => false, 'focused' => false, 'urgent' => false];
                     break;
             }
         }

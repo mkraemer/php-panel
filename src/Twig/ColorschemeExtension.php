@@ -10,56 +10,28 @@ use Twig_Extension;
 class ColorschemeExtension extends Twig_Extension
 {
     protected $backgroundColor;
-    protected $fontColor;
-    protected $focusedDesktopColor;
-    protected $occupiedDesktopColor;
-    protected $unoccupiedDesktopColor;
-    protected $batteryColor;
-    protected $wifiColor;
-    protected $soundUnmutedColor;
-    protected $soundMutedColor;
-    protected $timeColor;
-    protected $splitterColor;
+    protected $foregroundColor;
+    protected $urgentColor;
+    protected $unoccupiedColor;
 
-    public function __construct($backgroundColor, $fontColor, $focusedDesktopColor, $occupiedDesktopColor, $unoccupiedDesktopColor, $batteryColor, $wifiColor, $soundUnmutedColor, $soundMutedColor, $timeColor, $splitterColor)
+    public function __construct()
     {
-        $this->backgroundColor = $backgroundColor;
+        $this->backgroundColor = '#00000000';
 
-        $this->fontColor = $fontColor;
+        $this->foregroundColor = '#FFf7f7f7';
 
-        $this->focusedDesktopColor = $focusedDesktopColor;
+        $this->urgentColor = '#FFFF5858';
 
-        $this->occupiedDesktopColor = $occupiedDesktopColor;
-
-        $this->unoccupiedDesktopColor = $unoccupiedDesktopColor;
-
-        $this->batteryColor = $batteryColor;
-
-        $this->wifiColor = $wifiColor;
-
-        $this->soundUnmutedColor = $soundUnmutedColor;
-
-        $this->soundMutedColor = $soundMutedColor;
-
-        $this->timeColor = $timeColor;
-
-        $this->splitterColor = $splitterColor;
+        $this->unoccupiedColor = '#FF666666';
     }
 
     public function getGlobals()
     {
         return [
             'backgroundColor' => $this->backgroundColor,
-            'fontColor' => $this->fontColor,
-            'focusedDesktopColor' => $this->focusedDesktopColor,
-            'occupiedDesktopColor' => $this->occupiedDesktopColor,
-            'unoccupiedDesktopColor' => $this->unoccupiedDesktopColor,
-            'batteryColor' => $this->batteryColor,
-            'wifiColor' => $this->wifiColor,
-            'soundUnmutedColor' => $this->soundUnmutedColor,
-            'soundMutedColor' => $this->soundMutedColor,
-            'timeColor' => $this->timeColor,
-            'splitterColor' => $this->splitterColor
+            'foregroundColor' => $this->foregroundColor,
+            'urgentColor' => $this->urgentColor,
+            'unoccupiedColor' => $this->unoccupiedColor,
         ];
     }
 

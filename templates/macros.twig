@@ -1,4 +1,4 @@
-{% macro element(icon, text, color) %}
-{{icon|color_fg(color)}} {{text|color_fg(color)}}
+{% macro element(icon, text) %}
+{{icon|color_fg(foregroundColor)}} {{text|color_fg(foregroundColor)}}
 {% endmacro %}
 

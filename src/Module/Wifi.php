@@ -19,10 +19,7 @@ class Wifi implements PeriodiclyUpdatedModuleInterface
 
     public function __invoke()
     {
-        $data = shell_exec('iw wlp3s0 link');
-
-        preg_match('/SSID:\s(?P<SSID>\w+)$/ms', $data, $matches);
-        $essid = $matches['SSID'];
+        $essid = shell_exec('iwgetid -r');
 
         return ['essid' => $essid];
     }
